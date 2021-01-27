@@ -1,3 +1,4 @@
+
 LOCAL_PATH := $(call my-dir)
 
 ifeq ($(call is-vendor-board-platform,QCOM),true)
@@ -12,8 +13,7 @@ LOCAL_SHARED_LIBRARIES := \
     libdl \
     libbase \
     libutils \
-    android.hardware.power-ndk_platform \
-    vendor.lineage.power-ndk_platform \
+    android.hardware.power-V1-ndk_platform \
     libbinder_ndk
 
 LOCAL_HEADER_LIBRARIES := \
