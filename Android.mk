@@ -1,4 +1,3 @@
-
 LOCAL_PATH := $(call my-dir)
 
 ifeq ($(call is-vendor-board-platform,QCOM),true)
@@ -111,7 +110,20 @@ ifeq ($(call is-board-platform-in-list,msmnile), true)
 LOCAL_SRC_FILES += power-msmnile.c
 endif
 
+ifeq ($(call is-board-platform-in-list,sm6150), true)
+LOCAL_SRC_FILES += power-6150.c
+endif
+
+ifeq ($(call is-board-platform-in-list,trinket), true)
+LOCAL_SRC_FILES += power-trinket.c
+endif
+
 endif # End of board specific list
+
+ifneq ($(TARGET_POWERHAL_BOOST_EXT),)
+    LOCAL_CFLAGS += -DBOOST_EXT
+    LOCAL_SRC_FILES += ../../../../$(TARGET_POWERHAL_BOOST_EXT)
+endif
 
 ifneq ($(TARGET_POWERHAL_MODE_EXT),)
     LOCAL_CFLAGS += -DMODE_EXT
@@ -139,4 +151,5 @@ LOCAL_VENDOR_MODULE := true
 LOCAL_VINTF_FRAGMENTS := power.xml
 
 include $(BUILD_EXECUTABLE)
+
 endif
